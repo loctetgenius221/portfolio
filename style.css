@@ -1,0 +1,606 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Design System CSS pour Portfolio */
+
+:root {
+    /* Échelle de typographie (base 16px) */
+    --font-size-xs: 0.75rem;     /* 12px */
+    --font-size-sm: 0.875rem;    /* 14px */
+    --font-size-base: 1rem;      /* 16px */
+    --font-size-lg: 1.25rem;     /* 20px */
+    --font-size-xl: 1.5rem;      /* 24px */
+    --font-size-2xl: 2rem;       /* 32px */
+    --font-size-3xl: 2.5rem;     /* 40px */
+    --font-size-4xl: 3rem;       /* 48px */
+
+    /* Espacement */
+    --spacing-xs: 0.25rem;   /* 4px */
+    --spacing-sm: 0.5rem;    /* 8px */
+    --spacing-md: 1rem;      /* 16px */
+    --spacing-lg: 1.5rem;    /* 24px */
+    --spacing-xl: 2rem;      /* 32px */
+    --spacing-2xl: 3rem;     /* 48px */
+
+    /* Polices */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-secondary: 'Roboto Mono', monospace;
+
+    /* Bordures */
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 1rem;
+    --border-radius-full: 9999px;
+
+    /* Thème Clair - Couleurs */
+    --light-bg-primary: #FBFDFF;
+    --light-bg-secondary: #F4FAFF;
+    --light-text-primary: #0D74CE;
+    --light-text-secondary: #113264;
+    --light-accent-primary: #3b82f6;
+    --light-accent-secondary: #10b981;
+    --light-border-color: #e4e4e7;
+    --light-shadow-color: #C2E5FF;
+    --light-ui-element-bg: #E6F4FE;
+
+    /* Thème Sombre - Couleurs */
+    --dark-bg-primary: #0D1520;
+    --dark-bg-secondary: #111927;
+    --dark-text-primary: #70B8FF;
+    --dark-text-secondary: #C2E6FF;
+    --dark-accent-primary: #60a5fa;
+    --dark-accent-secondary: #34d399;
+    --dark-border-color: #3f3f46;
+    --dark-shadow-color: #004074;
+    --dark-ui-element-bg: #0D2847
+
+}
+
+ /* Styles pour l'icône de thème */
+ .theme-toggle {
+    background: var(--light-bg-secondary);
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xs);
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+}
+
+.dark-theme .theme-toggle {
+    background: var(--dark-bg-secondary);
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg);
+}
+
+.theme-toggle svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5;
+    stroke: var(--light-text-secondary);
+    fill: none;
+}
+
+.dark-theme .theme-toggle svg {
+    stroke: var(--dark-text-secondary);
+}
+
+h1 {
+    color: var(--light-text-secondary);
+}
+
+.dark-theme h1 {
+    color: var(--dark-text-secondary);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light-bg-primary);
+}
+
+body.dark-theme {
+    background-color: var(--dark-bg-primary);
+}
+
+#wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.navbar {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--light-text-secondary);
+}
+
+.dark-theme .navbar {
+    border-bottom: 1px solid var(--dark-text-secondary);
+}
+
+.navbar > a {
+    text-decoration: none;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.navbar ul a {
+    text-decoration: none;
+    color: var(--light-text-secondary);
+    margin: 0 5px;
+    padding: 1px 5px;
+}
+
+.dark-theme .navbar ul a {
+    color: var(--dark-text-secondary);
+}
+
+.hero-section {
+    width: 100%;
+    height: 80vh;
+    margin-bottom: 50px;
+}
+
+.hero-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.hero-content img.profil-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* opacity: .5; */
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 200px var(--light-shadow-color);
+}
+
+.hero-content img.pattern-ratture {
+    position: absolute;
+    width: 150px;
+    left: 5%;
+    top: 30%;
+    filter: brightness(0) saturate(100%) invert(48%) sepia(72%) saturate(1931%) hue-rotate(191deg) brightness(98%) contrast(101%);
+}
+
+.hero-content img.pattern-fleches {
+    width: 100px;
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    transform: rotateX(180deg);
+    filter: brightness(0) saturate(100%) invert(48%) sepia(72%) saturate(1931%) hue-rotate(191deg) brightness(98%) contrast(101%);
+}
+
+.hero-content img.pattern-fleche {
+    width: 100px;
+    position: absolute;
+    bottom: -5%;
+    filter: brightness(0) saturate(100%) invert(75%) sepia(12%) saturate(1000%) hue-rotate(190deg) brightness(110%) contrast(95%);
+
+}
+
+.dark-theme .hero-content img.profil-img {
+    box-shadow: 0px 0px 150px var(--dark-shadow-color);
+}
+
+.hero-txt p {
+    color: var(--light-text-secondary);
+}
+
+.hero-txt p span {
+    color: var(--light-text-primary);
+}
+
+.dark-theme .hero-txt p {
+    color: var(--dark-text-secondary);
+}
+
+.dark-theme .hero-contact span {
+    color: var(--dark-text-primary);
+}
+
+.dark-theme .hero-icons .icons i {
+    color: var(--dark-text-secondary);
+}
+
+.hero-content .hero-txt h1 {
+    font-size: 70px;
+}
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.icons .cv {
+    border: 1px solid var(--light-text-secondary);
+    font-size: 14px;
+    background: var(--light-bg-secondary);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+}
+
+.icons .cv i {
+    font-size: 14px;
+    margin-right: 2px;
+}
+
+.hero-icons i {
+    font-size: 25px;
+}
+
+.hero-content .hero-contact {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.hero-content .hero-contact span {
+    display: flex;
+    gap: 5px;
+    font-size: 18px;
+}
+
+/******************************************/
+/***       Projet Light CSS Code        ***/
+/******************************************/
+
+.projects {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects h2 {
+    font-size: 50px;
+    opacity: .3;
+    align-self: end;
+    text-align: right;
+}
+
+.projects .project {
+    display: flex;
+    justify-content: space-around;
+    margin: 35px 0px;
+}
+
+.projects .project2 {
+    flex-direction: row-reverse;
+}
+
+.projects .project img {
+    width: 40%;
+    /* height: ; */
+    filter: drop-shadow(0px 0px 100px var(--light-shadow-color));
+
+}
+
+.projects .project .project-desc {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.projects .project .tags {
+    display: flex;
+    gap: 10px;
+}
+
+.projects .tags .tag {
+    padding: 5px 10px;
+    background: var(--light-bg-secondary);
+    border-radius: 10px;
+}
+
+.project .project-desc button {
+    width: fit-content;
+    background: var(--light-ui-element-bg);
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+/******************************************/
+/***        Projet Dark CSS Code        ***/
+/******************************************/
+.dark-theme .projects h2 {
+    color: var(--dark-text-secondary);
+    opacity: .3;
+}
+
+.dark-theme .projects .project img {
+    filter: drop-shadow(0px 0px 100px var(--dark-shadow-color));
+}
+
+.dark-theme .project .project-desc h3,
+.dark-theme .project .project-desc p {
+    color: var(--dark-text-secondary);
+}
+
+.dark-theme .projects .tags .tag {
+    padding: 5px 10px;
+    background: var(--dark-bg-secondary);
+    border-radius: 10px;
+}
+
+.dark-theme .project .project-desc button {
+    background: var(--dark-ui-element-bg);
+    color: var(--dark-text-primary);
+    box-shadow: 3px 3px 4px var(--dark-shadow-color);
+}
+
+/******************************************/
+/***        Skills Light CSS Code       ***/
+/******************************************/
+.skills {
+    width: 100%;
+    height: auto;
+    margin: 50px 0px;
+}
+
+.skills h2 {
+    font-size: 50px;
+    opacity: .3;
+    margin-bottom: 20px;
+}
+
+.skills-content .skills-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.skills-content h3 {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.skills-content i {
+    font-size: 55px;
+    margin-right: 20px;
+}
+
+.skills-content img {
+    width: 150px;
+    height: 70px;
+    /* object-fit: cover; */
+}
+
+.skills img.fleches-curly {
+    width: 100px;
+    filter: brightness(0) saturate(100%) invert(75%) sepia(12%) saturate(1000%) hue-rotate(190deg) brightness(110%) contrast(95%);
+    transform: rotateY(180deg);
+    margin-top: -25px;
+}
+
+.skills .skills-titles {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/******************************************/
+/***        Skills Dark CSS Code        ***/
+/******************************************/
+
+.dark-theme .skills h2 {
+    color: var(--dark-text-secondary);
+}
+
+.skills-content h3 {
+    border-bottom: 1px solid var(--dark-text-secondary);
+    color: var(--dark-text-secondary);
+}
+
+/******************************************/
+/***       Contact Light CSS Code       ***/
+/******************************************/
+
+.contact {
+    margin-bottom: 25px;
+}
+
+.contact h2 {
+    font-size: 50px;
+    opacity: .3;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact .contact-titles {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.contact img.fleches-curly {
+    width: 100px;
+    filter: brightness(0) saturate(100%) invert(75%) sepia(12%) saturate(1000%) hue-rotate(190deg) brightness(110%) contrast(95%);
+    /* transform: rotateY(180deg); */
+    margin-top: -25px;
+}
+
+.contact .contact-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.contact .contact-content .contact-txt {
+    width: 50%;
+}
+
+.contact-txt h1 {
+    font-size: 50px;
+    line-height: 70px;
+    margin-bottom: 50px;
+}
+
+.contact .contact-content form {
+    width: 50%;
+    padding: 25px;
+}
+
+form .row1 {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+form .row2,
+form .row3 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+form input {
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+form .row1 input{
+    width: 100%;
+}
+
+form textarea {
+    height: 200px;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    margin-top: 8px;
+}
+
+/******************************************/
+/***       Contact Dark CSS Code        ***/
+/******************************************/
+
+.dark-theme .contact .contact-content form {
+    width: 50%;
+    /* background-color: #70b7ff11; */
+    backdrop-filter: blur(145px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px 1px #00407491;
+
+}
+
+.dark-theme form .row1 {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.dark-theme form .row2,
+.dark-theme form .row3 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.dark-theme form input {
+    border-radius: 5px;
+    background-color: var(--dark-bg-secondary);
+    /* border: 1px solid var(--dark-text-primary); */
+    color: var(--dark-text-secondary);
+}
+
+.dark-theme form input:focus {
+    outline: 1px solid var(--dark-text-secondary);
+}
+
+.dark-theme form label {
+    color: var(--dark-text-secondary);
+    opacity: .8;
+}
+
+.dark-theme form .row1 input{
+    width: 100%;
+}
+
+.dark-theme form textarea {
+    color: var(--dark-text-secondary);
+    height: 200px;
+    background-color: var(--dark-bg-secondary);
+    backdrop-filter: blur(120px);
+    /* border: 1px solid var(--dark-text-primary); */
+    border: none;
+    border-radius: 5px;
+}
+
+.dark-theme form textarea:focus {
+    outline: 1px solid var(--dark-text-secondary);
+}
+
+.dark-theme .contact-content .icons {
+    justify-content: left;
+    margin-top: 20px;
+    gap: 10px
+}
+
+.dark-theme .contact h2 {
+    color: var(--dark-text-secondary);
+}
+
+/******************************************/
+/***       Footer Light CSS Code        ***/
+/******************************************/
+
+footer {
+    margin-top: 80px;
+    height: 65px;
+    border-top: 1px solid black;
+    align-content: center;
+    text-align: center;
+}
+
+/******************************************/
+/***       Footer Dark CSS Code        ***/
+/******************************************/
+
+footer {
+    border-top: 1px solid var(--dark-text-secondary);
+}
+
+footer p {
+    color: var(--dark-text-secondary);
+}
